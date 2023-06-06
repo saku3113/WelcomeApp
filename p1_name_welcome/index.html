@@ -1,0 +1,63 @@
+<html>
+     <head>
+           <title>Welcome App</title>
+           <style>
+                 *{ font-size:50px; }
+           </style>
+           <script>
+                  function welcome()
+                  {
+                      event.preventDefault();
+                      let name=document.getElementById("name");
+                      let msg=document.getElementById("msg");
+                      
+                      if(name.value.trim().length==0)
+                      {
+                         alert("name cannot be spaces");
+                         name.value="";
+                         name.focus();
+                         msg.innerHTML="";
+                         return;
+                      }
+
+                      if(!name.value.match(/^[A-Za-z]+$/))
+                      {
+                        alert("name can contain only alphabets");
+                         name.value="";
+                         name.focus();
+                         msg.innerHTML="";
+                         return;
+                      }
+                           
+                      if(name.value.trim().length<2)
+                      {
+                        alert("name shud contain min 2 alphabets");
+                         name.value="";
+                         msg.innerHTML="";
+                         name.focus();
+                         return;
+                      } 
+                      
+                      let d=new Date();
+                      let hr=d.getHours();
+                      let m="";
+                      if(hr<12)                  m="good morning";
+                      else if(hr<16)             m="good afternoon";
+                      else                       m="good evening";
+                      let ans=m +" "+ name.value;
+                      msg.innerHTML=ans;
+                  }
+           </script>
+     </head>
+     <body>
+     <center>
+            <h1>Welcome app</h1>
+            <form onsubmit="welcome()">
+            <input type="text"placeholder="enter ur name" id="name"/>
+            <br/><br/>
+            <input type="submit"/>
+            </form>
+            <h1 id="msg"></h1>
+     </center>
+     </body>
+</html>
